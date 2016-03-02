@@ -1,0 +1,31 @@
+import java.net.Socket;
+
+public class TriviaClient 
+{
+	int port_number;
+	Socket client_socket;
+	
+	public TriviaClient(int port) throws IOException
+	{
+		port_number = port;
+		client_socket = new Socket(port_number);
+		
+	
+	
+	
+	}
+	
+	
+	void close()
+	{
+		try
+			{ 
+				client_socket.close();
+			}
+		catch(Exception e)
+			{
+				//ignore
+			}
+	}
+	
+}
