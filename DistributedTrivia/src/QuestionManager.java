@@ -1,10 +1,22 @@
 import java.util.ArrayList;
 
 public class QuestionManager {
-	ArrayList<Question> SportsAndLeisure, History, Geography, Entertainment, ArtsAndLit, ScienceAndNature;
-
-	public QuestionManager(){
+	//ArrayList<Question> SportsAndLeisure, History, Geography, Entertainment, ArtsAndLit, ScienceAndNature;
+	ArrayList<Question> ArtsAndLit=new ArrayList<Question>();
+	ArrayList<Question> History=new ArrayList<Question>();
+	ArrayList<Question> Geography=new ArrayList<Question>();
+	ArrayList<Question> Entertainment=new ArrayList<Question>();
+	ArrayList<Question> SportsAndLeisure=new ArrayList<Question>();
+	ArrayList<Question> ScienceAndNature=new ArrayList<Question>();
+	
+	private static final QuestionManager instance =new QuestionManager();
+	
+	private QuestionManager(){
 		//Don't think we really need anything besides the ArrayLists 
+	}
+	
+	public static QuestionManager getInstance(){
+		return instance;
 	}
 	
 	//Should the Question Manager add the questions itself or have
@@ -30,6 +42,7 @@ public class QuestionManager {
 	
 	
 	public Question getQuestionFrom(String category){
+		System.out.println(category);
 		//The getQuestionFrom returns a question of type Question
 		//from the appropiate list that was given in the parameters
 		switch(category){

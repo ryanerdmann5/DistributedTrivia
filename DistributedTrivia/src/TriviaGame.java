@@ -1,5 +1,7 @@
 //Ryan Erdmann
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -7,6 +9,7 @@ public class TriviaGame {
 	private int turns;
 	private ArrayList<Integer> players = new ArrayList<Integer>();
 	private boolean gameRunning = false;
+	private String[] categories={"SportsAndLeisure", "History", "Geography", "Entertainment", "ArtsAndLit", "ScienceAndNature"};
 
 	/**
 	 * Sets up the TriviaGame class
@@ -45,14 +48,15 @@ public class TriviaGame {
 		int category;
 		Random rn = new Random();
 		String Question = null;
-		QuestionManager qm = new QuestionManager();
+		QuestionManager qm = QuestionManager.getInstance();
+		Question q;
 		for (int i = 0; i <= turns; i++) {
-			category = rn.nextInt(6 - 0 + 1) + 0;
-			System.out.println(category);
-			// Question=qm.getQuestionFrom(category);
-			System.out.println(Question);
+			category = rn.nextInt(5 - 0 + 1) + 0;
+			//System.out.println(category);
+			q=qm.getQuestionFrom(categories[category]);
+			q.returnQuestion();
 			// wait for response
-			Thread.sleep(30000);
+			Thread.sleep(3000);
 			// calculate scores
 		}
 		gameRunning=false;
@@ -65,8 +69,15 @@ public class TriviaGame {
 	/**
 	 * for testing
 	 * @param args
+	 * @throws InterruptedException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException, FileNotFoundException, IOException {
+		QuestionReader qr=new QuestionReader("C:\\Users\\Ryan\\Desktop\\temp\\Questions.csv");
+		qr.readFile();
+		TriviaGame tg = new TriviaGame(5);
+		tg.startGame();
 
 	}
 

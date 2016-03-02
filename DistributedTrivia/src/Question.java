@@ -6,16 +6,21 @@ public class Question {
 	
 	//create global variables to be easily accessed for the following:
 	// question, topic, answer a/b/c/d, answer given by user, count for correct answers
-	public static String question;
-	public static String topic;
-	public static String answerA;
-	public static String answerB;
-	public static String answerC;
-	public static String answerD;
-	public static String userAnswer;
-	public static int count = 0;
+	public String question;
+	public String answerA;
+	public String answerB;
+	public String answerC;
+	public String answerD;
+	public String userAnswer;
+	public int count = 0;
 	
-	public Question(String QuestionText, String topic, String answerA, String answerB, String answerC){
+	public Question(String QuestionText, String answerA, String answerB, String answerC, String answerD){
+		this.question=QuestionText;
+		this.answerA=answerA;
+		this.answerB=answerB;
+		this.answerC=answerC;
+		this.answerD=answerD;
+		
 		
 	}
 	
@@ -31,24 +36,24 @@ public class Question {
 	//in the appropriate variable
 			// also can use questionReader since it already gets the questions, just place in the variables
 			//right now doesn't do anything
-	QuestionReader reader = new QuestionReader("qs.csv");
+	//QuestionReader reader = new QuestionReader("qs.csv");
 	
 	
-	public static void returnQuestion(){
+	public void returnQuestion(){
 		//display question
-		System.out.println("Topic: History"); //Question Topic
-		System.out.println("This is your question:"); //Question
-		System.out.println("     A: "); //AnswerA
-		System.out.println("     B: "); //AnswerB
-		System.out.println("     C: "); //AnswerC
-		System.out.println("     D: "); //AnswerD
+		System.out.println("Topic:"); //Question Topic
+		System.out.println("This is your question:"+ this.question); //Question
+		System.out.println("     A: "+this.answerA); //AnswerA
+		System.out.println("     B: "+this.answerB); //AnswerB
+		System.out.println("     C: "+this.answerC); //AnswerC
+		System.out.println("     D: "+this.answerD); //AnswerD
 		
 		//Get user answer
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Which do you think is correct? Please type A/B/C/D: ");
+		//Scanner scanner = new Scanner(System.in);
+		System.out.println("Which do you think is correct? Please type A/B/C/D: ");
 
-		userAnswer = scanner.next();
-		
+		//userAnswer = scanner.next();
+		/*
 		//check if answer is correct if 
 		if(userAnswer != null){
 			if (userAnswer.equals("A")){
@@ -66,16 +71,11 @@ public class Question {
 			System.exit(0);	
 			
 		}
+		*/
 				
 	}
 	
 	
-	//can be removed. For test purposes only.
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		NumQuestion(10);
-		returnQuestion();
-		
-	}
+
 
 }
