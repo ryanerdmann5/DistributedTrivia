@@ -39,18 +39,22 @@ public class Question {
 	//QuestionReader reader = new QuestionReader("qs.csv");
 	
 	
-	public void returnQuestion(){
+	public String returnQuestion(){
 		//display question
+		/*
 		System.out.println("Topic:"); //Question Topic
 		System.out.println("This is your question:"+ this.question); //Question
 		System.out.println("     A: "+this.answerA); //AnswerA
 		System.out.println("     B: "+this.answerB); //AnswerB
 		System.out.println("     C: "+this.answerC); //AnswerC
 		System.out.println("     D: "+this.answerD); //AnswerD
+		*/
+		return ("Question: "+this.question+" A: "+this.answerA+" B: "+this.answerB+" C: "+this.answerC+" D: "+this.answerD);
+		
 		
 		//Get user answer
 		//Scanner scanner = new Scanner(System.in);
-		System.out.println("Which do you think is correct? Please type A/B/C/D: ");
+		//System.out.println("Which do you think is correct? Please type A/B/C/D: ");
 
 		//userAnswer = scanner.next();
 		/*

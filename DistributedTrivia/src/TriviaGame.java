@@ -50,13 +50,13 @@ public class TriviaGame {
 		String Question = null;
 		QuestionManager qm = QuestionManager.getInstance();
 		Question q;
-		for (int i = 0; i <= turns; i++) {
+		for (int i = 0; i < turns; i++) {
 			category = rn.nextInt(5 - 0 + 1) + 0;
 			//System.out.println(category);
 			q=qm.getQuestionFrom(categories[category]);
-			q.returnQuestion();
+			System.out.println(q.returnQuestion());
 			// wait for response
-			Thread.sleep(3000);
+			Thread.sleep(30000);
 			// calculate scores
 		}
 		gameRunning=false;
