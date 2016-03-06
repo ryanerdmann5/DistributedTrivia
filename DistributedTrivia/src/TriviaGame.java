@@ -77,16 +77,20 @@ public class TriviaGame {
 			int port=Integer.parseInt(args[0]);
 			int turns=Integer.parseInt(args[1]);
 			TriviaServer ts=new TriviaServer(port,turns);
+			ts.askQuestions();
 			
 		}
 		if(args.length==1){
 			//TriviaClient();
 		}
+		
+		
+		/*
 		QuestionReader qr=new QuestionReader("C:\\Users\\Ryan\\Desktop\\temp\\Questions.csv");
 		qr.readFile();
 		TriviaGame tg = new TriviaGame(5);
 		tg.startGame();
-
+		 */
 	}
 
 }

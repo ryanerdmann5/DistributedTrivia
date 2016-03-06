@@ -29,6 +29,8 @@ public class TriviaServer {
 			client_socket = server_socket.accept();
 			input = new BufferedReader(new InputStreamReader(client_socket.getInputStream()));
 			output = new PrintWriter(client_socket.getOutputStream(), true);
+			QuestionReader qr=new QuestionReader("Questions.csv");
+			qr.readFile();
 	}
 	
 	
