@@ -62,10 +62,6 @@ public class TriviaGame {
 		gameRunning=false;
 	}
 	
-	public int calculateScore(){
-		return 0;
-	}
-
 	/**
 	 * for testing
 	 * @param args
@@ -74,6 +70,18 @@ public class TriviaGame {
 	 * @throws FileNotFoundException 
 	 */
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException, IOException {
+		if(args.length==0||args.length>2){
+			System.out.println("Usage: <port> <# of turns>");
+		}
+		if(args.length==2){
+			int port=Integer.parseInt(args[0]);
+			int turns=Integer.parseInt(args[1]);
+			TriviaServer ts=new TriviaServer(port,turns);
+			
+		}
+		if(args.length==1){
+			//TriviaClient();
+		}
 		QuestionReader qr=new QuestionReader("C:\\Users\\Ryan\\Desktop\\temp\\Questions.csv");
 		qr.readFile();
 		TriviaGame tg = new TriviaGame(5);

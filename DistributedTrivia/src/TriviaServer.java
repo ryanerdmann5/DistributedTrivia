@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Random;
 
 public class TriviaServer {
 
@@ -14,9 +15,14 @@ public class TriviaServer {
 	BufferedReader input;
 	PrintWriter output;
 	
+	int score;
+	private String[] categories={"SportsAndLeisure", "History", "Geography", "Entertainment", "ArtsAndLit", "ScienceAndNature"};
+	private boolean gameRunning=false;
+	int turns;
 	
-	public TriviaServer(int port) throws IOException
+	public TriviaServer(int port, int turns) throws IOException
 	{
+			this.turns=turns;
 			port_number = port;
 			server_socket = new ServerSocket(port_number);
 			System.out.println(port_number);
@@ -24,6 +30,40 @@ public class TriviaServer {
 			input = new BufferedReader(new InputStreamReader(client_socket.getInputStream()));
 			output = new PrintWriter(client_socket.getOutputStream(), true);
 	}
+	
+	
+	public void askQuestions() throws InterruptedException, IOException{
+		int category;
+		Random rn = new Random();
+		String Question = null;
+		QuestionManager qm = QuestionManager.getInstance();
+		Question q;
+		String answer;
+		output.println(turns);
+		for (int i = 0; i < turns; i++) {
+			category = rn.nextInt(5 - 0 + 1) + 0;
+			//System.out.println(category);
+			q=qm.getQuestionFrom(categories[category]);
+			output.println(q.returnQuestion());
+			// wait for response
+			answer=input.readLine();
+			//hardcoded A for now, will have to change
+			if(answer.equals("A")||answer.equals("a")){
+				score=score++;
+				output.println("That's correct!");
+			}
+			//again, hardcoded A
+			else{
+				output.println("The correct answer was"+"A");
+			}
+			
+			// calculate scores
+		}
+		output.println(score);
+		gameRunning=false;
+		close();
+	}
+	
 	
 	
 	
