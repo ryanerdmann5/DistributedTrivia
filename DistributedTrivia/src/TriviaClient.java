@@ -22,7 +22,26 @@ public class TriviaClient
 		input = new BufferedReader(new InputStreamReader(client_socket.getInputStream()));
 	}
 	
+	
+	public void recieveQuestions() throws IOException{
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		while(input.readLine() != null){
+			//reads question
+			input.readLine();
+			//standard input answer
+			String answer = in.readLine();
+			answerQuestion(answer);
+			
+		}
+	}
 
+	public void answerQuestion(String answer) throws IOException{
+		//writes to PrintWriter
+		output.println(answer);
+		//Gets response about it's answer (correct/incorrect)
+		input.readLine();
+	}
+	
 	void close()
 	{
 		try
@@ -31,6 +50,24 @@ public class TriviaClient
 			client_socket.close();
 			}
 		catch(Exception e){}
+	}
+	
+	public static void main(String[] args){
+		if(args.length != 1){
+			System.err.println("Port number argument missing");
+			System.err.println("Usage: TriviaClient(portNumber");
+		} else{
+			try{
+				//starts client
+				TriviaClient client = new TriviaClient(Integer.parseInt(args[0]));
+				//recieve questions in the form of while loop
+				client.recieveQuestions();
+				//
+				
+			} catch(IOException e){
+				e.getMessage();
+			}
+		}
 	}
 	
 }
