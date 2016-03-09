@@ -53,20 +53,20 @@ public class TriviaServer {
 			// wait for response
 			answer=input.readLine();
 			//hardcoded A for now, will have to change
-			if(answer.equals("A")||answer.equals("a")){
+			if(q.checkAnswer(answer)){
 				score=score+1;
 				System.out.println(score);
 				output.println("That's correct!");
 			}
 			//again, hardcoded A
 			else{
-				output.println("The correct answer was "+"A");
+				output.println("The correct answer was "+q.getAnswer());
 			}
 			
 			// calculate scores
 		}
 		System.out.println(score);
-		output.println("Final Score :"+score);
+		output.println("Final Score: "+score);
 		gameRunning=false;
 		close();
 	}

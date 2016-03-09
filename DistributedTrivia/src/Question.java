@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Question {
@@ -13,6 +15,7 @@ public class Question {
 	public String answerD;
 	public String userAnswer;
 	public int count = 0;
+	private ArrayList<String> questionList=new ArrayList<String>();
 	
 	public Question(String QuestionText, String answerA, String answerB, String answerC, String answerD){
 		this.question=QuestionText;
@@ -20,6 +23,12 @@ public class Question {
 		this.answerB=answerB;
 		this.answerC=answerC;
 		this.answerD=answerD;
+		questionList.add(answerA);
+		questionList.add(answerB);
+		questionList.add(answerC);
+		questionList.add(answerD);
+		Collections.shuffle(questionList);
+		
 		
 		
 	}
@@ -49,36 +58,42 @@ public class Question {
 		System.out.println("     C: "+this.answerC); //AnswerC
 		System.out.println("     D: "+this.answerD); //AnswerD
 		*/
-		return ("Question: "+this.question+" A: "+this.answerA+" B: "+this.answerB+" C: "+this.answerC+" D: "+this.answerD);
+		return ("Question: "+this.question+" A: "+questionList.get(0)+" B: "+questionList.get(1)+
+				" C: "+questionList.get(2)+" D: "+questionList.get(3));
 		
 		
-		//Get user answer
-		//Scanner scanner = new Scanner(System.in);
-		//System.out.println("Which do you think is correct? Please type A/B/C/D: ");
-
-		//userAnswer = scanner.next();
-		/*
-		//check if answer is correct if 
-		if(userAnswer != null){
-			if (userAnswer.equals("A")){
-			System.out.println(userAnswer + " was inputed.");
-			return;
-			}
-			else 
-				System.out.println(userAnswer + " was inputed instead.");
-		}
-		else
-		{
-			//close game, will be closed more gracefully with client/server
-			System.out.println("No input was detected or wrong input entered. Game will be terminated.");
-			System.out.println("Goodbye");
-			System.exit(0);	
-			
-		}
-		*/
 				
 	}
 	
+	public boolean checkAnswer(String answer){
+		if(answer.equals("A")||answer.equals("a")){
+			if(questionList.get(0).equals(answerA))return true;
+			return false;
+		}
+		
+		if(answer.equals("B")||answer.equals("b")){
+			if(questionList.get(1).equals(answerA))return true;
+			return false;
+		}
+		
+		if(answer.equals("C")||answer.equals("c")){
+			if(questionList.get(2).equals(answerA))return true;
+			return false;
+		}
+		if(answer.equals("D")||answer.equals("d")){
+			if(questionList.get(3).equals(answerA))return true;
+			return false;
+		}
+		return false;
+	}
+	
+	public String getAnswer(){
+		if(questionList.get(0).equals(answerA))return "A";
+		if(questionList.get(1).equals(answerA))return "B";
+		if(questionList.get(2).equals(answerA))return "C";
+		if(questionList.get(3).equals(answerA))return "D";
+		return"error";
+	}
 	
 
 
