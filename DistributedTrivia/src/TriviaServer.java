@@ -42,26 +42,31 @@ public class TriviaServer {
 		Question q;
 		String answer;
 		output.println(turns);
+		score=0;
 		for (int i = 0; i < turns; i++) {
 			category = rn.nextInt(5 - 0 + 1) + 0;
 			//System.out.println(category);
+			output.println(categories[category]);
 			q=qm.getQuestionFrom(categories[category]);
+			//System.out.println("sending question");
 			output.println(q.returnQuestion());
 			// wait for response
 			answer=input.readLine();
 			//hardcoded A for now, will have to change
 			if(answer.equals("A")||answer.equals("a")){
-				score=score++;
+				score=score+1;
+				System.out.println(score);
 				output.println("That's correct!");
 			}
 			//again, hardcoded A
 			else{
-				output.println("The correct answer was"+"A");
+				output.println("The correct answer was "+"A");
 			}
 			
 			// calculate scores
 		}
-		output.println(score);
+		System.out.println(score);
+		output.println("Final Score :"+score);
 		gameRunning=false;
 		close();
 	}

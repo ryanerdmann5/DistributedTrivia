@@ -81,7 +81,9 @@ public class TriviaGame {
 			
 		}
 		if(args.length==1){
-			//TriviaClient();
+			TriviaClient client = new TriviaClient(Integer.parseInt(args[0]));
+			//recieve questions in the form of while loop
+			client.recieveQuestions();
 		}
 		
 		

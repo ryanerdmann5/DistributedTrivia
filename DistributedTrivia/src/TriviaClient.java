@@ -17,6 +17,7 @@ public class TriviaClient
 	public TriviaClient(int port) throws IOException
 	{
 		port_number = port;
+		address=InetAddress.getLoopbackAddress();
 		client_socket = new Socket(address, port_number);
 		output = new PrintWriter(client_socket.getOutputStream(), true);
 		input = new BufferedReader(new InputStreamReader(client_socket.getInputStream()));
@@ -25,21 +26,26 @@ public class TriviaClient
 	
 	public void recieveQuestions() throws IOException{
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		while(input.readLine() != null){
+		int turns=Integer.parseInt(input.readLine());
+		System.out.println(turns+" turn game");
+		for(int i=0;i<turns;i++){
+			//System.out.println("While loop");
+			System.out.println("Category: "+input.readLine());
 			//reads question
-			input.readLine();
+			System.out.println(input.readLine());
 			//standard input answer
 			String answer = in.readLine();
 			answerQuestion(answer);
 			
 		}
+	System.out.println(input.readLine());
 	}
 
 	public void answerQuestion(String answer) throws IOException{
 		//writes to PrintWriter
 		output.println(answer);
 		//Gets response about it's answer (correct/incorrect)
-		input.readLine();
+		System.out.println(input.readLine());
 	}
 	
 	void close()
