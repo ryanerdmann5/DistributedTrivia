@@ -8,7 +8,7 @@ import java.util.Random;
 public class TriviaGame {
 	private int turns;
 	private ArrayList<Integer> players = new ArrayList<Integer>();
-	private boolean gameRunning = false;
+	//private boolean gameRunning = false;
 	private String[] categories={"SportsAndLeisure", "History", "Geography", "Entertainment", "ArtsAndLit", "ScienceAndNature"};
 
 	/**
@@ -36,7 +36,7 @@ public class TriviaGame {
 	 * @throws InterruptedException
 	 */
 	public void startGame() throws InterruptedException {
-		gameRunning = true;
+		//gameRunning = true;
 		askQuestion();
 	}
 
@@ -47,7 +47,7 @@ public class TriviaGame {
 	public void askQuestion() throws InterruptedException {
 		int category;
 		Random rn = new Random();
-		String Question = null;
+		//String Question = null;
 		QuestionManager qm = QuestionManager.getInstance();
 		Question q;
 		for (int i = 0; i < turns; i++) {
@@ -59,8 +59,8 @@ public class TriviaGame {
 			Thread.sleep(30000);
 			// calculate scores
 		}
-		gameRunning=false;
-	}
+		//gameRunning=false;
+	} 
 	
 	/**
 	 * for testing
@@ -71,24 +71,41 @@ public class TriviaGame {
 	 */
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException, IOException {
 		if(args.length==0||args.length>2){
-			System.out.println("Usage: <port> <# of turns>");
+			System.out.println("How to play: You will be given a series of questions to answer. "
+					+ "Answer them to the best of your knowledge. "
+					+ "The faster you answer, the better your score will be. "
+					+ "Good luck!");
+			System.out.println("Usage: ");
+			System.out.println("As server: java TriviaGame <port> <# of turns>");
+			System.out.println("As client: java TriviaGame <port>");
 		}
 		if(args.length==2){
 			int port=Integer.parseInt(args[0]);
 			int turns=Integer.parseInt(args[1]);
 			TriviaServer ts=new TriviaServer(port,turns);
 			ts.askQuestions();
+	        
+	        
 			
 		}
 		if(args.length==1){
 			TriviaClient client = new TriviaClient(Integer.parseInt(args[0]));
 			//recieve questions in the form of while loop
-			client.recieveQuestions();
+			//client.receiveInstructions();
+			client.receiveQuestions();
 		}
 		
 		
 		/*
 		QuestionReader qr=new QuestionReader("C:\\Users\\Ryan\\Desktop\\temp\\Questions.csv");
+=======
+			//TriviaClient();
+			int port=Integer.parseInt(args[0]);
+			TriviaClient tc = new TriviaClient(port);
+			tc.recieveQuestions();
+		}
+		QuestionReader qr=new QuestionReader("q.csv");
+>>>>>>> Stashed changes
 		qr.readFile();
 		TriviaGame tg = new TriviaGame(5);
 		tg.startGame();

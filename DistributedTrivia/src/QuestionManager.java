@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class QuestionManager {
 	//ArrayList<Question> SportsAndLeisure, History, Geography, Entertainment, ArtsAndLit, ScienceAndNature;
@@ -19,25 +20,33 @@ public class QuestionManager {
 		return instance;
 	}
 	
-	//Should the Question Manager add the questions itself or have
-	//the questionReader do it since it is already going through all of the
-	//questions and knows the categorys
+
 	//just passes the Question and category as a string
+	
+	// added return statements to fix the bug of getting the same question twice
 	public void addQuestionTo(Question q, String list){
 		switch(list){
 		case "SportsAndLeisure":
 			SportsAndLeisure.add(q);
+			return;
 		case "History":
 			History.add(q);
+			return;
 		case "Geography":
 			Geography.add(q);
+			return;
 		case "Entertainment":
 			Entertainment.add(q);
+			return;
 		case "ArtsAndLit":
 			ArtsAndLit.add(q);
+			return;
 		case "ScienceAndNature":
 			ScienceAndNature.add(q);
+			return;
 		}
+
+
 	}
 	
 	
@@ -47,69 +56,82 @@ public class QuestionManager {
 		//from the appropiate list that was given in the parameters
 		switch(category){
 		case "SportsAndLeisure":
+			//System.out.println(SportsAndLeisure.size());
 			if(SportsAndLeisure.isEmpty()){
 				return null;
 				//return some error of this list is empty request a new one
 			} else{
 				//For now gets the first element
 				//can later add an int randomizer within length range
+				Collections.shuffle(SportsAndLeisure);
 				Question newQ = SportsAndLeisure.get(0);
-				SportsAndLeisure.remove(0);
+				SportsAndLeisure.remove(newQ);
 				return newQ;
 			}
 		case "History":
+			//System.out.println(History.size());
 			if(History.isEmpty()){
 				return null;
 				//return some error of this list is empty request a new one
 			} else{
 				//For now gets the first element
 				//can later add an int randomizer within length range
+				Collections.shuffle(History);
 				Question newQ = History.get(0);
-				History.remove(0);
+				History.remove(newQ);
 				return newQ;
 			}
+			
 		case "Geography":
+			//System.out.println(Geography.size());
 			if(Geography.isEmpty()){
 				return null;
 				//return some error of this list is empty request a new one
 			} else{
 				//For now gets the first element
 				//can later add an int randomizer within length range
+				Collections.shuffle(Geography);
 				Question newQ = Geography.get(0);
-				Geography.remove(0);
+				Geography.remove(newQ);
 				return newQ;
 			}
 		case "Entertainment":
+			//System.out.println(Entertainment.size());
 			if(Entertainment.isEmpty()){
 				return null;
 				//return some error of this list is empty request a new one
 			} else{
 				//For now gets the first element
 				//can later add an int randomizer within length range
+				Collections.shuffle(Entertainment);
 				Question newQ = Entertainment.get(0);
-				Entertainment.remove(0);
+				Entertainment.remove(newQ);
 				return newQ;
 			}
 		case "ArtsAndLit":
+			//System.out.println(ArtsAndLit.size());
 			if(ArtsAndLit.isEmpty()){
 				return null;
 				//return some error of this list is empty request a new one
 			} else{
 				//For now gets the first element
 				//can later add an int randomizer within length range
+				Collections.shuffle(ArtsAndLit);
 				Question newQ = ArtsAndLit.get(0);
-				ArtsAndLit.remove(0);
+				ArtsAndLit.remove(newQ);
 				return newQ;
 			}
 		case "ScienceAndNature":
+			//System.out.println(ScienceAndNature.size());
 			if(ScienceAndNature.isEmpty()){
 				return null;
 				//return some error of this list is empty request a new one
 			} else{
 				//For now gets the first element
 				//can later add an int randomizer within length range
+				Collections.shuffle(ScienceAndNature);
 				Question newQ = ScienceAndNature.get(0);
-				ScienceAndNature.remove(0);
+				ScienceAndNature.remove(newQ);
 				return newQ;
 			}
 			
