@@ -93,19 +93,18 @@ public class TriviaGame {
 			//recieve questions in the form of while loop
 			//client.receiveInstructions();
 			client.receiveQuestions();
+			//client.newGameStarted();
 		}
 		
 		
 		/*
 		QuestionReader qr=new QuestionReader("C:\\Users\\Ryan\\Desktop\\temp\\Questions.csv");
-=======
 			//TriviaClient();
 			int port=Integer.parseInt(args[0]);
 			TriviaClient tc = new TriviaClient(port);
 			tc.recieveQuestions();
 		}
 		QuestionReader qr=new QuestionReader("q.csv");
->>>>>>> Stashed changes
 		qr.readFile();
 		TriviaGame tg = new TriviaGame(5);
 		tg.startGame();

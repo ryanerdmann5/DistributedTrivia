@@ -55,6 +55,24 @@ public class TriviaClient
 		//Gets response about it's answer (correct/incorrect)
 		System.out.println(input.readLine());
 	}
+	
+	/*
+	public void newGameStarted() throws IOException {
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.println(input.readLine());
+		String response = in.readLine();
+		output.println(response);
+
+		System.out.println(input.readLine());
+		
+		if (!response.equals("yes")) {
+			close();
+		} else {
+			output.println(in.readLine());
+		}
+	}
+ */
 
 	void close()
 	{

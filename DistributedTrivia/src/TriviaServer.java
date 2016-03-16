@@ -107,8 +107,56 @@ public class TriviaServer {
 		System.out.println("Final Score: "+score);
 		output.println("Final Score: "+score);
 		//gameRunning=false;
+		//startNewGame();
 		close();
 	}
+
+	/*
+	public void startNewGame() throws InterruptedException, IOException
+	{
+		System.out.println("Asking if client wants to start new game");
+		output.println("Would you like to start a new game? (yes/no) ");
+
+		String NG = input.readLine();
+
+		if (NG != null)
+		{
+			if (NG.equals("yes"))
+			{
+				//Scanner scanner2 = new Scanner(System.in);
+				output.println("How many questions would you like? (1-60) ");
+				String NewG = input.readLine();
+
+				int y = Integer.parseInt(NewG);
+				if (y >= 1 && y <= 60) 
+				{
+					try{
+						client_socket.close();
+						server_socket.close();
+						TriviaServer ts = new TriviaServer(port_number+1, y);
+						TriviaClient client = new TriviaClient(port_number+1);
+
+						ts.askQuestions();
+
+						client.receiveQuestions();
+						client.newGameStarted();
+
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+
+				} else {
+					close();
+				}
+			} else {
+				System.out.println("Thanks for playing! Goodbye.");
+				output.println("Thanks for playing! Goodbye.");
+				close();
+			}
+
+		}
+
+	} */
 
 
 	void close()
